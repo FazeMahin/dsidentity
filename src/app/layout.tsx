@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   title: "DS Identity | Beyond Commerce. Beyond Convention.",
   description:
     "DS Identity is the home of commerce, entrepreneurship, financial literacy, and student-led innovation at Dubai Scholars Private School.",
-  metadataBase: new URL("https://example.com"),
+  metadataBase: new URL("https://dsidentity.tech"),
   openGraph: {
     title: "DS Identity",
     description:
