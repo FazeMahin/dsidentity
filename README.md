@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DS Identity
 
-## Getting Started
+Premium Next.js App Router website for the DS Identity student community at Dubai Scholars Private School.
 
-First, run the development server:
+## Overview
+
+This project delivers a dark luxury editorial website for DS Identity with:
+
+- F1-inspired minimal dashboard styling
+- App Router architecture in Next.js 16+
+- TypeScript and Tailwind CSS
+- Framer Motion interactions
+- Functional magazine reader demo for Beyond Ventures
+- Centralised content data for events, initiatives, resources, and leadership
+
+## Local development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `src/app` — routes and page entry points
+- `src/components` — reusable UI and page sections
+- `src/data` — content registry for initiatives, events, resources, team, magazines
+- `src/types` — shared TypeScript models
 
-## Learn More
+## Add or edit resources
 
-To learn more about Next.js, take a look at the following resources:
+1. Update the relevant data in `src/data/site.ts`.
+2. Keep `qualification`, `subject`, `category`, `status`, and `description` values aligned with the resource model.
+3. Use the existing route structure for new pages or expand the central registry.
+4. For PDFs or magazine files, place them in `public/magazines/` and update the relevant URL.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Resource placeholder rules
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Do not invent student names, dates, achievements, or real publication data.
+- Keep unavailable items clearly labelled as placeholders or “Coming Soon”.
+- Prefer editable, centralised text over hardcoded page-specific copy.
 
-## Deploy on Vercel
+## Demo magazine
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The first edition reader uses a functional placeholder demo, while the PDF download route points to a sample placeholder file under `public/magazines/` so the magazine experience remains working during early publishing.

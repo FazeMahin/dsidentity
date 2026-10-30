@@ -1,0 +1,24 @@
+.ds-ventures-gallery { margin-top: 48px; overflow: hidden; border: 1px solid #93c5fd24; border-radius: 28px; background: #0a1428; color: #f5f7fa; }
+.ds-ventures-gallery__intro { padding: 40px 36px 0; max-width: 780px; }
+.ds-ventures-gallery__eyebrow { color: #93c5fd; text-transform: uppercase; font-size: 11px; letter-spacing: .3em; }
+.ds-ventures-gallery h2 { margin: 16px 0; font-family: var(--font-space-grotesk), sans-serif; font-size: clamp(28px, 4vw, 44px); line-height: 1.1; letter-spacing: -.05em; }
+.ds-ventures-gallery__intro > p:not(:first-child) { color: #cbd5e1; font-size: 15px; line-height: 1.8; }
+.ds-ventures-gallery__notice { display: inline-block; margin-top: 16px; color: #94a3b8; font-size: 12px; }
+.ds-ventures-gallery__canvas { height: 520px; background: radial-gradient(ellipse at 50% 55%, #1d4ed820, transparent 65%); }
+.ds-ventures-gallery__footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 24px 36px; border-top: 1px solid #93c5fd1c; }
+.ds-ventures-gallery__footer p { color: #94a3b8; font-size: 12px; line-height: 1.8; }
+.ds-ventures-gallery__footer button, .ds-ventures-lightbox button { flex-shrink: 0; padding: 10px 16px; border: 1px solid #93c5fd50; border-radius: 999px; font-size: 12px; cursor: pointer; color: #f5f7fa; background: #0a1428; }
+.ds-ventures-gallery button:focus-visible, .ds-ventures-lightbox button:focus-visible { outline: 2px solid #93c5fd; outline-offset: 4px; }
+.ds-ventures-lightbox { margin: auto; width: min(1000px, 94vw); max-height: 94svh; padding: 20px; border: 1px solid #93c5fd50; border-radius: 20px; color: white; background: #0a1428; }
+.ds-ventures-lightbox::backdrop { background: #020617e8; }
+.ds-ventures-lightbox__top, .ds-ventures-lightbox__bottom { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.ds-ventures-lightbox > img { width: 100%; height: auto; max-height: 64svh; object-fit: contain; margin: 16px 0; }
+.ds-ventures-lightbox__bottom p { text-align: center; font-size: 13px; }
+.ds-ventures-lightbox__bottom span { display: block; color: #94a3b8; font-size: 11px; margin-top: 4px; }
+@media (max-width: 640px) {
+  .ds-ventures-gallery__intro { padding: 28px 20px 0; }
+  .ds-ventures-gallery__canvas { height: 380px; }
+  .ds-ventures-gallery__footer { padding: 20px; align-items: flex-start; flex-direction: column; }
+  .ds-ventures-lightbox { padding: 12px; }
+  .ds-ventures-lightbox__bottom span { display: none; }
+}
