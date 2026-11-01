@@ -142,6 +142,8 @@ export function MagazineFlipbook() {
         <div className="flex justify-center overflow-auto p-2 sm:p-6">
           <div className="ds-reader-zoom"
             style={{
+              width: "100%",
+              maxWidth: isMobile ? 360 : 1040,
               transform: `scale(${zoom})`,
               transformOrigin: "center top",
             }}
