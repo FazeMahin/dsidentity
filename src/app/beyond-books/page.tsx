@@ -11,9 +11,9 @@ export default function BeyondBooksPage() {
           <h1 className="mt-6 font-display text-4xl font-semibold tracking-[-0.07em] text-white sm:text-6xl">
             BEYOND BOOKS
           </h1>
-          <p className="mt-5 text-2xl font-medium text-sky-100">Your Commerce Resource Hub.</p>
+          <p className="mt-5 text-2xl font-medium text-sky-100">Your Pearson Edexcel Resource Hub.</p>
           <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300">
-            Topic-based past paper questions, essential revision materials, examination guidance, and academic resources — organised to make studying simpler and more effective.
+            Six Pearson Edexcel subject pathways. Topic-based questions, mark schemes, notes, and study materials are being prepared. All resources are Coming Soon.
           </p>
         </div>
 

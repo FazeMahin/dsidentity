@@ -7,7 +7,7 @@ export default function VolumeOnePage() {
         <div className="mb-10 text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.32em] text-sky-400">Volume 01</p>
           <h1 className="mt-4 font-display text-4xl font-semibold tracking-[-0.06em] text-slate-950 dark:text-white sm:text-5xl">
-            Where It All Began.
+            Shadows to Spotlight
           </h1>
         </div>
         <MagazineFlipbook />

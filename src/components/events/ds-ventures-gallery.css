@@ -22,3 +22,7 @@
   .ds-ventures-lightbox { padding: 12px; }
   .ds-ventures-lightbox__bottom span { display: none; }
 }
+
+.ds-gallery-groups { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 20px; padding: 12px 20px 25px; }
+.ds-gallery-groups button { border: 1px solid #93c5fd50; padding: 10px 14px; font-size: 11px; color: #bfdbfe; cursor: pointer; }
+.ds-gallery-groups p { color: #94a3b8; font-size: 11px; }

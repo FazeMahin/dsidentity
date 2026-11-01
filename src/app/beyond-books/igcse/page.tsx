@@ -14,7 +14,7 @@ export default function IGCSEPage() {
             IGCSE RESOURCES
           </h1>
           <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300">
-            A structured library of revision materials, topic-based questions, and exam guidance for commerce and related academic areas.
+            Pearson Edexcel International GCSE pathways. All study resources are Coming Soon.
           </p>
         </div>
       </section>

@@ -1,3 +1,7 @@
+import { homepageStatistics } from "./community";
+import { venturists, investmentClub } from "./event-content";
+import { volumeOne, volumeTwo, volumeOneInterviews } from "./magazines";
+import { leadership, people } from "./team";
 import type {
   DSEvent,
   InitiativeCard,
@@ -18,12 +22,7 @@ export const navItems: NavItem[] = [
   { label: "Meet the Team", href: "/team", isLast: true },
 ];
 
-export const stats = [
-  { value: 8, label: "Cycles of DS Ventures", suffix: "" },
-  { value: 0, label: "Students Engaged", suffix: "+", placeholder: true },
-  { value: 0, label: "Events and Initiatives", suffix: "+", placeholder: true },
-  { value: 0, label: "Years of Impact", suffix: "+", placeholder: true },
-];
+export const stats = homepageStatistics;
 
 export const initiatives: InitiativeCard[] = [
   {
@@ -46,9 +45,9 @@ export const initiatives: InitiativeCard[] = [
   },
   {
     title: "Beyond Borders",
-    tagline: "Impact Beyond the Classroom.",
+    tagline: "Something Bigger Is Coming.",
     description:
-      "An upcoming initiative focused on broadening learning, community engagement, and opportunities beyond the school environment.",
+      "Something Bigger Is Coming. Details will be revealed in time.",
     href: "/beyond-borders",
     cta: "Coming Soon",
     accent: "from-cyan-500/20 via-blue-500/10 to-slate-500/10",
@@ -57,9 +56,9 @@ export const initiatives: InitiativeCard[] = [
 
 export const legacyItems: LegacyItem[] = [
   {
-    title: "DS Ventures",
+    title: "DS Venturists",
     description:
-      "DS Ventures has completed eight cycles and is described by the community as the longest-running annual event at Dubai Scholars Private School.",
+      "Eight cycles of DS Venturists have welcomed an estimated 1,000+ student participations at Dubai Scholars Private School.",
     detail:
       "It has contributed to the school’s entrepreneurial culture and student participation through competitions, pitching opportunities, and business-inspired learning experiences.",
   },
@@ -120,129 +119,23 @@ export const subjectCatalog = {
   ],
 };
 
-export const studyResources: StudyResource[] = [
-  {
-    id: "igcse-business-demand-supply",
-    title: "Demand and Supply",
-    qualification: "igcse",
-    subject: "business",
-    specification: "Edexcel / Cambridge-style placeholders",
-    unit: "Unit 1",
-    topic: "Demand and Supply",
-    category: "past-paper",
-    description: "Topic-based questions designed to strengthen understanding of demand, supply, and market behaviour.",
-    status: "available",
-    lastUpdated: "2026",
-  },
-  {
-    id: "igcse-economic-elasticity",
-    title: "Price Elasticity of Demand",
-    qualification: "igcse",
-    subject: "economics",
-    specification: "Qualification placeholder",
-    unit: "Microeconomics",
-    topic: "Price Elasticity of Demand",
-    category: "past-paper",
-    description: "Practice questions and examples focusing on elasticity calculations and interpretation.",
-    status: "available",
-    lastUpdated: "2026",
-  },
-  {
-    id: "ial-business-14-mark",
-    title: "14-mark Questions",
-    qualification: "ial",
-    subject: "business",
-    specification: "Assessment objective guidance",
-    unit: "Paper 3 Placeholder",
-    category: "exam-technique",
-    description: "Guidance for strategic evaluation, balanced judgement, and developed application in extended responses.",
-    status: "available",
-  },
-  {
-    id: "ial-accounting-sofp",
-    title: "Statement of Financial Position",
-    qualification: "ial",
-    subject: "accounting",
-    category: "accounting-format",
-    description: "Template layout and worked example for preparing a statement of financial position.",
-    status: "available",
-  },
-  {
-    id: "igcse-economics-revision-notes",
-    title: "Economics Revision Notes",
-    qualification: "igcse",
-    subject: "economics",
-    category: "study-material",
-    description: "Concise revision guidance covering core definitions, diagrams, and common evaluation points.",
-    status: "available",
-  },
-];
+// No study resources have been published. The future-ready library lives in resources.ts.
+export const studyResources: StudyResource[] = [];
 
 export const magazineEditions: MagazineEdition[] = [
-  {
-    id: "volume-1",
-    title: "Beyond Ventures",
-    volume: 1,
-    status: "published",
-    coverImage: "/magazines/volume-1/pages/1.jpg",
-    pdfUrl: "/magazines/beyond-ventures-volume-1.pdf",
-    description: "First edition: Where It All Began.",
-    theme: "The first edition of the magazine.",
-  },
-  {
-    id: "volume-2",
-    title: "Beyond the Blueprint",
-    volume: 2,
-    status: "coming-soon",
-    coverImage: null,
-    description: "Volume two is currently in development and will explore the decisions, challenges, and ambitions behind extraordinary work.",
-    theme: "Coming Soon",
-  },
+  { id: "volume-1", title: volumeOne.title, volume: 1, status: "published", coverImage: volumeOne.cover, pdfUrl: "/magazines/beyond-ventures-volume-1.pdf", description: volumeOne.description[0], theme: volumeOne.title },
+  { id: "volume-2", title: volumeTwo.title, volume: 2, status: "coming-soon", coverImage: null, description: volumeTwo.description[0], theme: volumeTwo.title },
 ];
-
-export const interviews: InterviewFeature[] = [
-  {
-    id: "entrepreneurs",
-    name: null,
-    category: "Entrepreneurs",
-    description: "Profiles exploring ambition, risk-taking, and the ideas behind building a vision.",
-    href: "#placeholder",
-    image: null,
-  },
-  {
-    id: "youth-entrepreneurs",
-    name: null,
-    category: "Youth entrepreneurs",
-    description: "Stories of innovation and leadership from young people shaping new opportunities.",
-    href: "#placeholder",
-    image: null,
-  },
-  {
-    id: "world-record-holders",
-    name: null,
-    category: "World record holders",
-    description: "Conversations with individuals who have pushed performance, discipline, and achievement further.",
-    href: "#placeholder",
-    image: null,
-  },
-  {
-    id: "sporting-personalities",
-    name: null,
-    category: "Sporting personalities",
-    description: "An editorial lens on resilience, motivation, and the mindset behind excellence.",
-    href: "#placeholder",
-    image: null,
-  },
-];
+export const interviews: InterviewFeature[] = volumeOneInterviews.map(video => ({ id: video.id, name: video.title, category: video.category, description: video.description ?? "", href: `https://www.youtube.com/watch?v=${video.id}`, image: `https://i.ytimg.com/vi/${video.id}/hqdefault.jpg` }));
 
 export const events: DSEvent[] = [
   {
-    id: "ds-ventures",
-    slug: "ds-ventures",
-    title: "DS Ventures",
+    id: "ds-venturists",
+    slug: "ds-venturists",
+    title: "DS Venturists",
     category: "Entrepreneurship / Competition",
     description:
-      "DS Ventures is one of Dubai Scholars Private School's longest-standing annual events, having completed eight cycles and providing students with opportunities to explore entrepreneurship, innovation, and business thinking.",
+      venturists.description[0],
     academicYear: "Annual Event",
     status: "published",
   },
@@ -252,7 +145,7 @@ export const events: DSEvent[] = [
     title: "Investment Literacy Club",
     category: "Financial Education / Club",
     description:
-      "An initiative focused on developing financial literacy, investment awareness, and practical understanding of financial decision-making.",
+      investmentClub.description[0],
     academicYear: "Ongoing",
     status: "published",
   },
@@ -294,45 +187,8 @@ export const events: DSEvent[] = [
   },
 ];
 
-export const teamMembers: TeamMember[] = [
-  {
-    id: "president",
-    name: null,
-    role: "President",
-    image: null,
-    bio: "Placeholder leadership profile for the community’s student leadership team.",
-    academicYear: "Academic Year Placeholder",
-    linkedin: "#placeholder",
-    displayOrder: 1,
-  },
-  {
-    id: "creative-director",
-    name: null,
-    role: "Creative Director",
-    image: null,
-    bio: "Placeholder profile for the visual leadership and editorial direction of DS Identity.",
-    academicYear: "Academic Year Placeholder",
-    linkedin: "#placeholder",
-    displayOrder: 2,
-  },
-  {
-    id: "leadership-1",
-    name: null,
-    role: "Leadership Position — To Be Announced",
-    image: null,
-    bio: "Future leadership role placeholder for upcoming organisational development.",
-    academicYear: "To Be Announced",
-    linkedin: null,
-    displayOrder: 3,
-  },
-  {
-    id: "leadership-2",
-    name: null,
-    role: "Leadership Position — To Be Announced",
-    image: null,
-    bio: "Future leadership role placeholder that can be expanded when team roles are confirmed.",
-    academicYear: "To Be Announced",
-    linkedin: null,
-    displayOrder: 4,
-  },
-];
+// Compatibility export for existing homepage previews; the approved roster is in team.ts.
+export const teamMembers: TeamMember[] = leadership.map((entry,index) => ({
+  id: entry.person, name: people[entry.person].name, role: entry.role,
+  image: people[entry.person].image, displayOrder: index + 1,
+}));

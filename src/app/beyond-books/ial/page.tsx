@@ -14,7 +14,7 @@ export default function IALPage() {
             IAS & IAL RESOURCES
           </h1>
           <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300">
-            Advanced study pathways with clear subject organisation for deeper revision, structured practice, and future expansion of topic-based resources.
+            Pearson Edexcel International AS / A Level pathways. All study resources are Coming Soon.
           </p>
         </div>
       </section>

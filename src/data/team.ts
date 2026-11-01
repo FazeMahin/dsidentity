@@ -4,6 +4,7 @@ export interface TeamPerson {
   initials: string;
   // Add a path under public/team/ here. Every appearance uses the same portrait.
   image: string | null;
+  imagePosition?: string;
 }
 
 export const people = {
@@ -45,7 +46,7 @@ export const initiativeTeams: {
     { person: "aryaveer", role: "Logistics Lead" },
     { person: "aayush", role: "Coordinator" },
   ] },
-  { id: "beyond-borders", name: "Beyond Borders", focus: "Community & new possibilities", members: [
+  { id: "beyond-borders", name: "Beyond Borders", focus: "An upcoming initiative", members: [
     { person: "caroline", role: "Founder & Lead" },
     { person: "mahin", role: "Co-Lead" },
     { person: "aryaveer", role: "Team Member" },

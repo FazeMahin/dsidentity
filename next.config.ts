@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  async redirects() {
+    return [{ source: "/events/ds-ventures", destination: "/events/ds-venturists", permanent: true }];
+  },
   cacheComponents: true,
   partialPrefetching: true,
   turbopack: {

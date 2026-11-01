@@ -1,31 +1,25 @@
 "use client";
-
-import { motion } from "framer-motion";
-import { stats } from "@/data/site";
-
-export function ImpactStats() {
-  return (
-    <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-      <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-        {stats.map((stat, index) => (
-          <motion.div
-            key={stat.label}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 0.45, delay: index * 0.08 }}
-            className="rounded-[1.75rem] border border-white/10 bg-slate-900/80 p-6 shadow-[0_0_25px_rgba(14,165,233,0.08)]"
-          >
-            <div className="text-4xl font-semibold tracking-[-0.08em] text-white">
-              {stat.placeholder ? "XX" : stat.value}
-              {stat.suffix}
-            </div>
-            <div className="mt-3 text-sm uppercase tracking-[0.18em] text-slate-400">
-              {stat.label}
-            </div>
-          </motion.div>
-        ))}
-      </div>
-    </section>
-  );
+import { useEffect, useRef } from "react";
+import { homepageStatistics, community } from "@/data/community";
+function Counter({ value, animate }: {value:number;animate:boolean}) {
+  const element = useRef<HTMLSpanElement>(null);
+  useEffect(()=>{
+    const node=element.current;
+    if (!node || !animate) return;
+    const reduced=window.matchMedia("(prefers-reduced-motion: reduce)");
+    let frame=0;
+    const finish=()=>{cancelAnimationFrame(frame);node.textContent=value.toLocaleString("en-US");};
+    const observer=new IntersectionObserver(entries=>{
+      if(!entries.some(e=>e.isIntersecting)) return;
+      observer.disconnect();
+      if(reduced.matches) return finish();
+      const start=performance.now();
+      const tick=(now:number)=>{const progress=Math.min(1,(now-start)/1300);node.textContent=Math.round(value*(1-Math.pow(1-progress,3))).toLocaleString("en-US");if(progress<1&&!reduced.matches) frame=requestAnimationFrame(tick);else finish();};
+      frame=requestAnimationFrame(tick);
+    },{threshold:.5});
+    observer.observe(node);reduced.addEventListener("change",finish);
+    return()=>{observer.disconnect();cancelAnimationFrame(frame);reduced.removeEventListener("change",finish);};
+  },[value,animate]);
+  return <span ref={element} aria-hidden="true">{animate ? value.toLocaleString("en-US") : String(value)}</span>;
 }
+export function ImpactStats(){return <section className="ds-shell" aria-label="DS Identity in numbers"><div className="ds-impact"><div className="ds-impact__grid">{homepageStatistics.map(s=><div key={s.label}><div className="ds-impact__number"><span className="sr-only">{s.animate ? s.value.toLocaleString("en-US") : String(s.value)}{s.suffix}</span><Counter value={s.value} animate={s.animate}/><span aria-hidden="true">{s.suffix}</span></div><p className="ds-impact__label">{s.label}</p></div>)}</div><p className="ds-note">{community.participationNote}</p></div></section>;}

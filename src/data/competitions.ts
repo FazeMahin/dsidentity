@@ -1,0 +1,5 @@
+export const externalCompetitionIntro = "DS Identity's influence extends beyond organising events at Dubai Scholars. Students have also participated in international competitions that challenge their knowledge of economics, investing, finance, and business strategy.";
+export const externalCompetitions = [
+  { id: "world-economics-cup", title: "World Economics Cup", description: "An international opportunity to explore economics and apply business knowledge beyond the classroom.", recognition: "Students from Dubai Scholars have participated in the World Economics Cup.", themes: ["Economics", "Business knowledge", "International participation"] },
+  { id: "wharton-investment", title: "Wharton Global High School Investment Competition", description: "An opportunity to work together on investment strategy, financial analysis, and portfolio decision-making.", recognition: "Dubai Scholars students have participated, with some receiving higher distinctions and participation certificates. Specific recognition details will be added when official certificates are available.", themes: ["Investment strategy", "Financial analysis", "Portfolio decisions", "Teamwork"] },
+];

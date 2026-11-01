@@ -2,11 +2,13 @@
 
 import { ArrowLeft, ArrowRight, Download, Fullscreen, Minus, Plus, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { useReducedMotion } from "framer-motion";
 import HTMLFlipBook from "react-pageflip";
 import { volumeOnePageManifest } from "@/data/magazine-volume-1";
 
 export function MagazineFlipbook() {
-  const flipBookRef = useRef<any>(null);
+  const flipBookRef = useRef<{ pageFlip: () => { flipNext: () => void; flipPrev: () => void } }>(null);
+  const reducedMotion = useReducedMotion();
   const [currentPage, setCurrentPage] = useState(0);
   const [zoom, setZoom] = useState(1);
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -35,10 +37,13 @@ export function MagazineFlipbook() {
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
+      if ((event.target as HTMLElement)?.closest("input, textarea, select")) return;
       if (event.key === "ArrowRight") {
+        event.preventDefault();
         flipBookRef.current?.pageFlip()?.flipNext();
       }
       if (event.key === "ArrowLeft") {
+        event.preventDefault();
         flipBookRef.current?.pageFlip()?.flipPrev();
       }
       if (event.key === "Escape" && isFullscreen) {
@@ -50,7 +55,7 @@ export function MagazineFlipbook() {
     return () => window.removeEventListener("keydown", onKey);
   }, [isFullscreen]);
 
-  const FlipBook = HTMLFlipBook as any;
+  const FlipBook = HTMLFlipBook;
 
   return (
     <div className="mx-auto max-w-6xl">
@@ -116,51 +121,58 @@ export function MagazineFlipbook() {
               <Fullscreen className="h-4 w-4" />
             </button>
             <a
+              download="Beyond-Ventures-Shadows-to-Spotlight.pdf"
               href="/magazines/beyond-ventures-volume-1.pdf"
               className="rounded-full border border-sky-500/40 bg-sky-500/10 p-2 text-sky-100"
               aria-label="Download PDF"
             >
               <Download className="h-4 w-4" />
             </a>
-            <button
+            {isFullscreen && <button
               type="button"
               onClick={() => setIsFullscreen(false)}
               className="rounded-full border border-white/10 bg-white/5 p-2"
               aria-label="Close reader"
             >
               <X className="h-4 w-4" />
-            </button>
+            </button>}
           </div>
         </div>
 
         <div className="flex justify-center overflow-auto p-2 sm:p-6">
-          <div
+          <div className="ds-reader-zoom"
             style={{
               transform: `scale(${zoom})`,
               transformOrigin: "center top",
-              transition: "transform 0.2s ease",
             }}
           >
             <FlipBook
               ref={flipBookRef}
-              width={isMobile ? 290 : 720}
-              height={isMobile ? 430 : 980}
+              key={isMobile ? "portrait" : "spread"}
+              width={isMobile ? 290 : 460}
+              height={isMobile ? 430 : 650}
               size="stretch"
               minWidth={260}
-              maxWidth={isMobile ? 320 : 780}
+              maxWidth={isMobile ? 360 : 520}
               minHeight={340}
-              maxHeight={1050}
+              maxHeight={750}
               drawShadow
-              flippingTime={900}
-              usePortrait={false}
+              flippingTime={reducedMotion ? 1 : 900}
+              usePortrait={true}
               showCover
               mobileScrollSupport
               swipeDistance={30}
               className="mx-auto"
-              startPage={0}
+              style={{}}
+              maxShadowOpacity={0.4}
+              clickEventForward
+              useMouseEvents
+              showPageCorners={!reducedMotion}
+              disableFlipByClick={false}
+              startPage={currentPage}
               startZIndex={10}
               autoSize
-              onFlip={(event: any) => setCurrentPage(event.data ?? 0)}
+              onFlip={(event: { data: number }) => setCurrentPage(event.data ?? 0)}
             >
               {volumeOnePageManifest.map((page, index) => (
                 <div
@@ -168,10 +180,12 @@ export function MagazineFlipbook() {
                   className="page relative overflow-hidden border border-slate-700 bg-slate-900 shadow-[0_20px_60px_rgba(15,23,42,0.5)]"
                 >
                   <div className="relative h-full w-full bg-black">
+                    {/* Native images retain the supplied print-page resolution when zooming. */}
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={page.src}
                       alt={page.alt}
-                      className="h-full w-full select-none object-cover object-center"
+                      className="h-full w-full select-none object-contain object-center"
                       draggable={false}
                       loading={index < 3 ? "eager" : "lazy"}
                     />

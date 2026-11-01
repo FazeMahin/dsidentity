@@ -96,7 +96,7 @@
   position: absolute;
   display: block;
   max-width: none;
-  object-fit: cover;
+  object-fit: contain;
   pointer-events: none;
   user-select: none;
   -webkit-user-drag: none;

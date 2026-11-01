@@ -38,7 +38,7 @@ export function Navbar() {
           DS IDENTITY
         </Link>
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-8 xl:flex">
           {navItems.map((item) => {
             const active = pathname === item.href;
 
@@ -71,26 +71,28 @@ export function Navbar() {
           })}
         </div>
 
-        <div className="hidden md:block">
+        <div className="hidden xl:block">
           <ThemeToggle variant="dark" />
         </div>
 
         <button
           type="button"
-          className={`inline-flex h-10 w-10 items-center justify-center rounded-full border md:hidden ${
+          className={`inline-flex h-10 w-10 items-center justify-center rounded-full border xl:hidden ${
             isHomeTop
               ? "border-white/20 bg-white/10 text-white"
               : "border-white/10 bg-white/5 text-white"
           }`}
           onClick={() => setOpen((prev) => !prev)}
           aria-label="Toggle menu"
+          aria-expanded={open}
+          aria-controls="mobile-navigation"
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </nav>
 
       {open && (
-        <div className="border-t border-white/10 bg-slate-950/95 md:hidden">
+        <div id="mobile-navigation" className="border-t border-white/10 bg-slate-950/95 xl:hidden">
           <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-4">
             {navItems.map((item) => (
               <Link

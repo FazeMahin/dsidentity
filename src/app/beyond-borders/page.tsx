@@ -1,11 +1,1 @@
-import { ComingSoon } from "@/components/ui/coming-soon";
-
-export default function BeyondBordersPage() {
-  return (
-    <ComingSoon
-      title="BEYOND BORDERS"
-      description="An upcoming initiative dedicated to expanding learning opportunities, financial awareness, and meaningful community engagement."
-      href="/"
-    />
-  );
-}
+export default function BeyondBordersPage(){return <section className="ds-borders"><div className="ds-borders__globe" aria-hidden="true"/><h1>BEYOND BORDERS</h1><h2>Something Bigger Is Coming.</h2><p className="ds-status">COMING SOON</p></section>;}

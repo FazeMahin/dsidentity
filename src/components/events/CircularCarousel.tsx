@@ -1000,7 +1000,7 @@ const CircularCarousel = ({
       }
       role="region"
       aria-roledescription="carousel"
-      aria-label="DS Ventures photo gallery. Use arrow keys to browse and Enter to enlarge."
+      aria-label="DS Venturists photo gallery. Use arrow keys to browse and Enter to enlarge."
       tabIndex={0}
       data-axis={axis}
       data-shape={shape}
